@@ -1,47 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './styles/theme.css';
+import './styles/global.css';
+import Header from './components/layout/Header';
+import Sidebar from './components/layout/Sidebar';
+import BacklogPage from './pages/BacklogPage';
 
-// PUBLIC_INTERFACE
+/**
+ * VizAi – Frontend entry. Renders the application layout:
+ * - Header navigation
+ * - Sidebar filters
+ * - Main content with backlog management
+ */
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="vizai-app">
+      <Header />
+      <div className="vizai-shell">
+        <Sidebar />
+        <main className="vizai-main">
+          <BacklogPage />
+        </main>
+      </div>
     </div>
   );
 }

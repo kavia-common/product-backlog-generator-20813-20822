@@ -1,82 +1,67 @@
-# Lightweight React Template for KAVIA
+# VizAi Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A bold, high-contrast React frontend for managing the VizAi product backlog. It features:
+- Header with navigation
+- Sidebar with quick filters
+- Main area with a sortable backlog table
+- Modal forms for creating and editing items
 
-## Features
+No external UI libraries; design is implemented via local CSS with the Ocean Professional theme.
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+## Run
 
-## Getting Started
+- npm start
+- npm test
+- npm run build
 
-In the project directory, you can run:
+Open http://localhost:3000
 
-### `npm start`
+## Theme
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Primary design tokens live in:
+- src/styles/theme.css (colors, radii, shadows)
+- src/styles/global.css (layout, components, utilities)
 
-### `npm test`
+Key colors:
+- primary: #F97316
+- secondary: #10B981
+- background: #000000
+- surface: #1F2937
+- text: #FFFFFF
 
-Launches the test runner in interactive watch mode.
+## App Structure
 
-### `npm run build`
+- src/components/layout/Header.jsx
+- src/components/layout/Sidebar.jsx
+- src/components/backlog/BacklogTable.jsx
+- src/components/forms/BacklogForm.jsx
+- src/components/ui/Modal.jsx
+- src/components/ui/Badge.jsx
+- src/components/ui/SortHeader.jsx
+- src/pages/BacklogPage.jsx
+- src/styles/theme.css
+- src/styles/global.css
+- src/App.js (app shell and routing placeholder)
+- src/index.js (React root)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Data & State
 
-## Customization
+Backlog items persist in localStorage (key: vizai.backlog). This app uses only local state and does not depend on environment variables initially.
 
-### Colors
+To reset to seed data:
+- Click "Reset Seed" button on the page, or
+- Clear localStorage key `vizai.backlog` in your browser.
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+## Accessibility
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+- High contrast colors on dark background
+- Focus rings for keyboard navigation
+- Semantic buttons and labels
+- ESC and backdrop click close for modals
 
-### Components
+## Next Steps / Extensibility
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Replace localStorage with real API calls (REST/GraphQL)
+- Introduce environment variables (via .env) for API base URLs
+- Add pagination, bulk actions, and role-based features
+- Add routing for Cameras, Events, Analytics, Rules, Admin
